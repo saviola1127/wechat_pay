@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>欢迎使用飞赛票务</title>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+		<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1" />
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<link href="css/ratchet.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/page.css" />
+		<link rel="stylesheet" type="text/css" href="css/product.css" />
+		<link rel="stylesheet" type="text/css" href="css/pro2.css" />
+
+		<script src="js/flex.js"></script>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/ratchet.min.js"></script>
+        <script src="js/check.js"></script>
+        <script src="js/get.js"></script>
+        <script src="js/style.js"></script>
+
+	</head>
+
+	<body onload="setcode()">
+    <input id="code" type="hidden" value="" /><br/>
+        <!--header-->
+		<header class="bar bar-nav">
+			<a class="icon icon-left-nav pull-left"></a>
+			<a class="icon icon-more-vertical pull-right"></a>
+			<h1 class="title">飞赛票务</h1>
+		</header>
+        <!--赛事介绍-->
+		<div id="content">
+			<div class="introduct">
+				<h1>    &nbsp;     </h1>
+				<h1>世界女排联赛总决赛即将于6月27号在南京举行，7月1日结束。届时，一场激烈的体育盛事一定会让我们热血沸腾。</h1>
+				<img src="images/introduct1.jpg">
+				<h1>参加总决赛的有六支队伍</h1>
+				<h1>分别是中国，美国，巴西，塞尔维亚，荷兰和土耳其。这几个队全部是世界强队，此前的分站比赛，中国队都没有取胜。</h1>
+				<img src="images/introduct2.jpg">
+				<h1>面对强大的对手，中国队应该利用东道主的天时地利人和，倾尽全力，力争第一。</h1>
+				<img src="images/introduct4.jpg">
+				<h1>美国队与巴西队是中国的老对手了，大家的打法互相之间都比较熟悉，两强相遇勇者胜。用百倍于对方的信心，打出水平，打出风采。</h1>
+				<h1>荷兰，土耳其与塞尔维亚，中国队在以前的比赛中相对占优。要利用她们速度慢的特点，速战速决。</h1>
+				<img src="images/introduct5.jpg">
+				<h1>相信在这未来的几天比赛中，中国女排一定能战胜所有对手，把冠军收入囊中。</h1>
+				<img src="images/ticket.jpg">
+			</div>
+		</div>
+        <!--门票购买-->
+		<div class="scroller">
+			<div id="p-summary" class="page">
+				<div class="container">
+					<section id="s-showcase">
+						<div class="scroller">
+							<div class="itbox main">
+								<a class="item"> <img src="images/女排大奖赛.jpg" alt="" /> </a>
+							</div>
+						</div>
+					</section>
+                    <!--赛事信息-->
+					<section id="s-from" class="mui-flex"> </section>
+					<section id="s-title">
+						<div class="main">
+							<h1 id="sport_name">世界女排联赛总决赛</h1>
+							<h1 id="sport_type">2018.6.27-2018.7.1</h1>
+							<h1>南京奥体中心体育馆</h1>
+						</div>
+						<div class="sub">
+							<div class="slogon"></div>
+						</div>
+					</section>
+                    <!--赛事价格-->
+					<section id="s-price">
+						<span class="mui-price big">
+            <i class="mui-price-rmb">&yen;</i>
+            <span class="mui-price-integer" id="minprice">50.00</span>
+						<span class="mui-price-integer" id="-">-</span>
+						<span class="mui-price-integer" id="maxprice">800.00</span>
+						</span>
+					</section>
+					<!--价格选择-->
+					<ul class="table-view">
+						<li class="table-view-cell" style="padding: 11px 6px 11px 15px;font-size: 18px;font-style:bold;color:#333;">价格选择 <span style="float: right;margin-right:10px;" class="icon icon icon-more clickwn"></span></li>
+					</ul>
+					<!--赛事须知-->
+					<ul class="table-view" style="margin-top: 10px;">
+						<li class="table-view-cell media">
+							<a class=""> <img class="media-object pull-left" src="images/赛事介绍.jpg" />
+								<div class="media-body">
+									<div class="media-body-text">购买须知</div>
+									<h1>比赛时间：2018.6.27-2018.7.1</h1>
+									<h1>比赛场馆：南京奥体中心体育馆</h1>
+									<h1>比赛时长:暂无相关信息，请以现场为准</h1>
+									<h1>入场时间:演出前约90分钟</h1>
+
+								</div>
+							</a>
+						</li>
+					</ul>
+					<!--验证部分-->
+					<div class="ipo">
+						<ul class="table-view">
+							<li class="table-view-cell media">
+								<a class="">
+									<div class="media-body"> 请填入个人信息 </div>
+								</a>
+							</li>
+						</ul>
+						<form action="" method="post" class="form" onsubmit="return check(this)">
+							<div><span>姓名：</span><input type="text" name="name" id="name" placeholder="姓名" /><br /></div>
+							<div><span>电话：</span><input type="text" name="phone" id="phone" placeholder="电话" /><br /></div>
+							<div><span>邮箱：</span><input type="text" name="email" id="email" placeholder="邮箱" /><br /></div>
+						</form>
+						<div class="spec-menu-btn">
+							<a class="red-color directorder" id="directorder_spec" onclick="return formValidate(this),addInfo()" style="transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);">立即购买</a>
+						</div>
+					</div>
+					<!-- 弹出 -->
+					<div class="flick-menu-mask" style=""></div>
+					<div class="spec-menu">
+						<div class="spec-menu-content spec-menu-show" style="display: block;">
+							<div class="spec-menu-top bdr-b">
+								<div class="spec-first-pic"> <img id="spec_image" src="images/logo.jpg" /> </div>
+								<a class="rt-close-btn-wrap spec-menu-close">
+									<p class="flick-menu-close tclck"> <img src="images/close.png" width="24" height="24" /> </p>
+								</a>
+							</div>
+							<div class="spec-menu-middle">
+								<div class="prod-spec" id="prodSpecArea">
+									<!-- 已选 -->
+									<div class="prod-spec" id="prodSpecArea">
+										<!-- 已选 -->
+										<div class="spec-desc"> <span class="part-note-msg">已选</span>
+											<div id="specDetailInfo_spec" class="base-txt"> <span class="amount">1</span>张 </div>
+										</div>
+										<!--//价格和时间-->
+										<div class="nature-container" id="natureCotainer">
+											<div class="pro-color"> <span class="part-note-msg"> 价格 </span>
+												<div id="price" flag="1">
+												</div>
+											</div>
+											<script>
+												function choosePrice(obj) {
+													$(obj).addClass('selected').siblings().removeClass('selected');
+												}
+											</script>
+											//时间
+											<div class="pro-color"> <span class="part-note-msg"> 时间 </span>
+												<p id="time" flag="1">
+												</p>
+											</div>
+											<!--容量-->
+											<!--数量-->
+										</div>
+										<!--尺寸-->
+										<!--容量-->
+										<!--数量-->
+										<div id="addCartNum" class="pro-count"> <span class="part-note-msg" style="margin-right: 10px;">数量</span>
+											<div style="width: 100%;margin-left: 10px;" class="num">
+												<p class="jian" style="float: left;margin-top: 5px;"><img src="images/jian.png" width="16" height="16"></p>
+												<input id="cool" class="inputBorder" value="1" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')" onafterpaste="this.value=this.value.replace(/[^0-9]/g,'')" type="text" maxlength="5" placeholder="数量" style="font-size: 12px;width: 60px;height: 20px;float: left;padding: 0 5px;margin-top:3px;margin-left: 5px;" />
+												<p class="jia" style="float: left;margin-top: 5px;margin-left:4px;"><img src="images/jia.png" width="16" height="16"></p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

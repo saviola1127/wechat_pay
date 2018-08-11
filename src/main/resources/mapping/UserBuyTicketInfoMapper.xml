@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fsi.ticket.wechat_pay2.mapper.UserBuyTicketInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.fsi.ticket.wechat_pay2.model.UserBuyTicketInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="mobile_number" property="mobileNumber" jdbcType="VARCHAR" />
+    <result column="sport_id" property="sportId" jdbcType="INTEGER" />
+    <result column="price_id" property="priceId" jdbcType="INTEGER" />
+    <result column="delivery_address" property="deliveryAddress" jdbcType="INTEGER" />
+    <result column="express_name" property="expressName" jdbcType="INTEGER" />
+    <result column="express_no" property="expressNo" jdbcType="INTEGER" />
+    <result column="pay_status" property="payStatus" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_name, mobile_number, sport_id, price_id, delivery_address, express_name, 
+    express_no, pay_status, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_buy_ticket_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user_buy_ticket_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.fsi.ticket.wechat_pay2.model.UserBuyTicketInfo" >
+    insert into user_buy_ticket_info (id, user_name, mobile_number, 
+      sport_id, price_id, delivery_address, 
+      express_name, express_no, pay_status, 
+      create_time, update_time)
+    values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{mobileNumber,jdbcType=VARCHAR}, 
+      #{sportId,jdbcType=INTEGER}, #{priceId,jdbcType=INTEGER}, #{deliveryAddress,jdbcType=INTEGER}, 
+      #{expressName,jdbcType=INTEGER}, #{expressNo,jdbcType=INTEGER}, #{payStatus,jdbcType=TIMESTAMP}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fsi.ticket.wechat_pay2.model.UserBuyTicketInfo" >
+    insert into user_buy_ticket_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="mobileNumber != null" >
+        mobile_number,
+      </if>
+      <if test="sportId != null" >
+        sport_id,
+      </if>
+      <if test="priceId != null" >
+        price_id,
+      </if>
+      <if test="deliveryAddress != null" >
+        delivery_address,
+      </if>
+      <if test="expressName != null" >
+        express_name,
+      </if>
+      <if test="expressNo != null" >
+        express_no,
+      </if>
+      <if test="payStatus != null" >
+        pay_status,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileNumber != null" >
+        #{mobileNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="sportId != null" >
+        #{sportId,jdbcType=INTEGER},
+      </if>
+      <if test="priceId != null" >
+        #{priceId,jdbcType=INTEGER},
+      </if>
+      <if test="deliveryAddress != null" >
+        #{deliveryAddress,jdbcType=INTEGER},
+      </if>
+      <if test="expressName != null" >
+        #{expressName,jdbcType=INTEGER},
+      </if>
+      <if test="expressNo != null" >
+        #{expressNo,jdbcType=INTEGER},
+      </if>
+      <if test="payStatus != null" >
+        #{payStatus,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fsi.ticket.wechat_pay2.model.UserBuyTicketInfo" >
+    update user_buy_ticket_info
+    <set >
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileNumber != null" >
+        mobile_number = #{mobileNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="sportId != null" >
+        sport_id = #{sportId,jdbcType=INTEGER},
+      </if>
+      <if test="priceId != null" >
+        price_id = #{priceId,jdbcType=INTEGER},
+      </if>
+      <if test="deliveryAddress != null" >
+        delivery_address = #{deliveryAddress,jdbcType=INTEGER},
+      </if>
+      <if test="expressName != null" >
+        express_name = #{expressName,jdbcType=INTEGER},
+      </if>
+      <if test="expressNo != null" >
+        express_no = #{expressNo,jdbcType=INTEGER},
+      </if>
+      <if test="payStatus != null" >
+        pay_status = #{payStatus,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fsi.ticket.wechat_pay2.model.UserBuyTicketInfo" >
+    update user_buy_ticket_info
+    set user_name = #{userName,jdbcType=VARCHAR},
+      mobile_number = #{mobileNumber,jdbcType=VARCHAR},
+      sport_id = #{sportId,jdbcType=INTEGER},
+      price_id = #{priceId,jdbcType=INTEGER},
+      delivery_address = #{deliveryAddress,jdbcType=INTEGER},
+      express_name = #{expressName,jdbcType=INTEGER},
+      express_no = #{expressNo,jdbcType=INTEGER},
+      pay_status = #{payStatus,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

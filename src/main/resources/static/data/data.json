@@ -1,0 +1,44 @@
+[{
+  "sportName": "南京苏宁",
+  "sportType": "FOOTBALL",
+  "sportTimeTicketPriceList": [{
+    "sportId": 2,
+    "sportTime": 1529466807000,
+    "ticketPriceList": [{
+      "id": 1,
+      "price": 180
+    }, {
+      "id": 2,
+      "price": 150
+    }, {
+      "id": 3,
+      "price": 200
+    }]
+  }, {
+    "sportId": 3,
+    "sportTime": 1530330807000,
+    "ticketPriceList": [{
+      "id": 4,
+      "price": 150
+    }, {
+      "id": 5,
+      "price": 200
+    }, {
+      "id": 6,
+      "price": 100
+    }]
+  },{
+    "sportId": 4,
+    "sportTime": 1530330807000,
+    "ticketPriceList": [{
+      "id": 7,
+      "price": 350
+    }, {
+      "id": 8,
+      "price": 450
+    }, {
+      "id": 9,
+      "price": 100
+    }]
+  }]
+}]

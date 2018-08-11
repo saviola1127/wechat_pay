@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fsi.ticket.wechat_pay2.mapper.SportInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.fsi.ticket.wechat_pay2.model.SportInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="sport_name" property="sportName" jdbcType="VARCHAR" />
+    <result column="sport_time" property="sportTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="CHAR" />
+    <result column="sport_type" property="sportType" jdbcType="CHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, sport_name, sport_time, status, sport_type, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from sport_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sport_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.fsi.ticket.wechat_pay2.model.SportInfo" >
+    insert into sport_info (id, sport_name, sport_time, 
+      status, sport_type, create_time,
+      update_time)
+    values (#{id,jdbcType=INTEGER}, #{sportName,jdbcType=VARCHAR}, #{sportTime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=CHAR}, #{sportType,jdbcType=CHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.fsi.ticket.wechat_pay2.model.SportInfo" >
+    insert into sport_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="sportName != null" >
+        sport_name,
+      </if>
+      <if test="sportTime != null" >
+        sport_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="sportType != null" >
+        sport_type,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="sportName != null" >
+        #{sportName,jdbcType=VARCHAR},
+      </if>
+      <if test="sportTime != null" >
+        #{sportTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+
+      <if test="sportType != null" >
+        #{sportType,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fsi.ticket.wechat_pay2.model.SportInfo" >
+    update sport_info
+    <set >
+      <if test="sportName != null" >
+        sport_name = #{sportName,jdbcType=VARCHAR},
+      </if>
+      <if test="sportTime != null" >
+        sport_time = #{sportTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="sportType != null" >
+        sport_type = #{sportType,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fsi.ticket.wechat_pay2.model.SportInfo" >
+    update sport_info
+    set sport_name = #{sportName,jdbcType=VARCHAR},
+      sport_time = #{sportTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=CHAR},
+      sport_type = #{sportType,jdbcType=CHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+    <!--<resultMap id="sportTimeTicketPrice" type="com.fsi.ticket.wechat_pay2.model.SportTimeTicketPrice">-->
+        <!---->
+    <!--</resultMap>-->
+  <resultMap id="sportTicketResultMap" type="com.fsi.ticket.wechat_pay2.model.SportInfoTicket">
+    <id column="match_id" jdbcType="INTEGER"  property="matchId" />
+      <result column="id" jdbcType="INTEGER" property="sportId" />
+    <result column="sport_name" jdbcType="VARCHAR" property="sportName" />
+    <result column="sport_type" jdbcType="CHAR" property="sportType" />
+
+    <collection javaType="ArrayList" ofType="com.fsi.ticket.wechat_pay2.model.SportTimeTicketPrice"
+                property="sportTimeTicketPriceList" column="id" select="getSportTime"/>
+
+  </resultMap>
+
+    <resultMap id="ticketPriceMap" type="com.fsi.ticket.wechat_pay2.model.TicketPrice" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="price" property="price" jdbcType="BIGINT" />
+    </resultMap>
+
+    <resultMap id="sportTimeTicketPriceMap" type="com.fsi.ticket.wechat_pay2.model.SportTimeTicketPrice">
+    <id column="id" property="sportId"/>
+    <result column="sport_time" jdbcType="VARCHAR" property="sportTime" />
+    <collection property="ticketPriceList" ofType="com.fsi.ticket.wechat_pay2.model.TicketPrice"
+                javaType="ArrayList" column="id" select="getTicketPrice" />
+    </resultMap>
+  <select id="getAllSportInfo" resultMap="sportTicketResultMap">
+        select t1.id, t1.sport_name, t1.sport_type from sport_info t1 where t1.match_id = 2 and t1.sport_time>=now() and t1.status='SHOW'
+   </select>
+    <select id="getSportTime" resultMap="sportTimeTicketPriceMap" parameterType="java.lang.Integer">
+        select id, sport_time from sport_info where id = #{id}
+    </select>
+    <select id="getTicketPrice" resultMap="ticketPriceMap" parameterType="java.lang.Integer">
+        select id,  price from ticket_price where status='Y' and sport_id = #{id}
+    </select>
+</mapper>
